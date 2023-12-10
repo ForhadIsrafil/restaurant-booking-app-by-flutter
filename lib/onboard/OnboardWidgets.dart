@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:restaurant_booking_app/registration_&_login/Registration&Login.dart';
 import 'utils/PageSelectorPages.dart';

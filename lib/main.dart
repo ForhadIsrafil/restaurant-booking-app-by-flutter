@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_booking_app/onboard/OnboardWidgets.dart';
-import 'package:restaurant_booking_app/registration_&_login/Registration&Login.dart';
 
 void main() {
   runApp(const MyApp());
