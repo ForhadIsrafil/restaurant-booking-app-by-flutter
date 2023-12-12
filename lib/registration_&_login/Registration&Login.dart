@@ -149,7 +149,10 @@ class _RegistrationAndLoginState extends State<RegistrationAndLogin> {
             width: 256,
             child: ElevatedButton(
               onPressed: () {
-                showDataAlert();
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) =>
+                        _buildPopupDialog(context));
               },
               style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xffD1FAE5),
