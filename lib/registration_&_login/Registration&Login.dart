@@ -20,6 +20,77 @@ class _RegistrationAndLoginState extends State<RegistrationAndLogin> {
   //   }
   // }
 
+  showDataAlert() {
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            shape: const RoundedRectangleBorder(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20.0),
+                topRight: Radius.circular(20.0),
+              ),
+            ),
+            contentPadding: EdgeInsets.only(
+              top: 10.0,
+            ),
+            title: Text(
+              "Create ID",
+              style: TextStyle(fontSize: 24.0),
+            ),
+            content: Container(
+              height: 400,
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Mension Your ID ",
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(8.0),
+                      child: TextField(
+                        decoration: InputDecoration(
+                            border: OutlineInputBorder(),
+                            hintText: 'Enter Id here',
+                            labelText: 'ID'),
+                      ),
+                    ),
+                    Container(
+                      width: double.infinity,
+                      height: 60,
+                      padding: const EdgeInsets.all(8.0),
+                      child: ElevatedButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        style: ElevatedButton.styleFrom(
+                          primary: Colors.black,
+                          // fixedSize: Size(250, 50),
+                        ),
+                        child: Text(
+                          "Submit",
+                        ),
+                      ),
+                    ),
+                    Container(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text('Note'),
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -77,7 +148,9 @@ class _RegistrationAndLoginState extends State<RegistrationAndLogin> {
             height: 49,
             width: 256,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                showDataAlert();
+              },
               style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xffD1FAE5),
                   textStyle: const TextStyle(
@@ -107,18 +180,33 @@ class _RegistrationAndLoginState extends State<RegistrationAndLogin> {
                   ..onTap = () => launchUrlString("https://www.google.com"),
               ),
               const TextSpan(
-                  text: " And ", style: TextStyle(color: Colors.black, fontSize: 10)),
+                  text: " And ",
+                  style: TextStyle(color: Colors.black, fontSize: 10)),
               TextSpan(
                 text: "Privacy Policy",
                 style: const TextStyle(color: Color(0xff32B768), fontSize: 10),
                 recognizer: TapGestureRecognizer()
                   ..onTap = () => launchUrlString("https://www.google.com"),
               ),
-              const TextSpan(text: ".", style: TextStyle(color: Colors.black, fontSize: 10)),
+              const TextSpan(
+                  text: ".",
+                  style: TextStyle(color: Colors.black, fontSize: 10)),
             ]),
           ),
         ],
       ),
     );
   }
+}
+
+Widget _buildPopupDialog(BuildContext context) {
+  return AlertDialog(
+    title: const Text("example"),
+    content: const Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [Text("hi there")],
+    ),
+    actions: [TextButton(onPressed: () {}, child: const Text("ok"))],
+  );
 }
