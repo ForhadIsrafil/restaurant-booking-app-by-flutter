@@ -10,7 +10,8 @@ class RegistrationAndLogin extends StatefulWidget {
   State<RegistrationAndLogin> createState() => _RegistrationAndLoginState();
 }
 
-class _RegistrationAndLoginState extends State<RegistrationAndLogin> {
+class _RegistrationAndLoginState extends State<RegistrationAndLogin>
+    with SingleTickerProviderStateMixin {
   // void _launchURL() async {
   //   Uri _url = Uri.parse('https://www.google.com');
   //   if (await launchUrl(_url)) {
@@ -19,77 +20,7 @@ class _RegistrationAndLoginState extends State<RegistrationAndLogin> {
   //     throw 'Could not launch $_url';
   //   }
   // }
-
-  showDataAlert() {
-    showDialog(
-        context: context,
-        builder: (context) {
-          return AlertDialog(
-            shape: const RoundedRectangleBorder(
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20.0),
-                topRight: Radius.circular(20.0),
-              ),
-            ),
-            contentPadding: EdgeInsets.only(
-              top: 10.0,
-            ),
-            title: Text(
-              "Create ID",
-              style: TextStyle(fontSize: 24.0),
-            ),
-            content: Container(
-              height: 400,
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.all(8.0),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        "Mension Your ID ",
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(8.0),
-                      child: TextField(
-                        decoration: InputDecoration(
-                            border: OutlineInputBorder(),
-                            hintText: 'Enter Id here',
-                            labelText: 'ID'),
-                      ),
-                    ),
-                    Container(
-                      width: double.infinity,
-                      height: 60,
-                      padding: const EdgeInsets.all(8.0),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          Navigator.of(context).pop();
-                        },
-                        style: ElevatedButton.styleFrom(
-                          primary: Colors.black,
-                          // fixedSize: Size(250, 50),
-                        ),
-                        child: Text(
-                          "Submit",
-                        ),
-                      ),
-                    ),
-                    Container(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text('Note'),
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          );
-        });
-  }
+  late final TabController _controller = TabController(length: 2, vsync: this);
 
   @override
   Widget build(BuildContext context) {
@@ -103,9 +34,7 @@ class _RegistrationAndLoginState extends State<RegistrationAndLogin> {
           const Padding(padding: EdgeInsets.only(top: 20)),
           const Text(
             "Welcome",
-            style: TextStyle(
-              fontSize: 25.0,
-            ),
+            style: TextStyle(fontSize: 25.0),
           ),
           const SizedBox(
             width: double.infinity,
@@ -153,6 +82,7 @@ class _RegistrationAndLoginState extends State<RegistrationAndLogin> {
                     context: context,
                     builder: (BuildContext context) =>
                         _buildPopupDialog(context));
+                // showDataAlert();
               },
               style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xffD1FAE5),
@@ -204,12 +134,99 @@ class _RegistrationAndLoginState extends State<RegistrationAndLogin> {
 
 Widget _buildPopupDialog(BuildContext context) {
   return AlertDialog(
-    title: const Text("example"),
-    content: const Column(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [Text("hi there")],
+    scrollable: true,
+    insetPadding: EdgeInsets.zero,
+    backgroundColor: Colors.white,
+    icon: const Icon(
+      Icons.remove,
+      size: 50,
+      color: Colors.grey,
     ),
-    actions: [TextButton(onPressed: () {}, child: const Text("ok"))],
+    iconPadding: EdgeInsets.zero,
+    alignment: Alignment.center,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.only(
+        topLeft: Radius.circular(35.0),
+        topRight: Radius.circular(35.0),
+      ),
+    ),
+    // contentPadding: const EdgeInsets.only(
+    //   top: 2.0,
+    // ),
+    content: SizedBox(
+    width: MediaQuery.of(context).size.width,
+      child: null,
+    ),
   );
 }
+
+// showDataAlert() {
+//   showDialog(
+//       context: context,
+//       builder: (context) {
+//         return AlertDialog(
+//           shape: const RoundedRectangleBorder(
+//             borderRadius: BorderRadius.only(
+//               topLeft: Radius.circular(20.0),
+//               topRight: Radius.circular(20.0),
+//             ),
+//           ),
+//           contentPadding: EdgeInsets.only(
+//             top: 10.0,
+//           ),
+//           title: Text(
+//             "Create ID",
+//             style: TextStyle(fontSize: 24.0),
+//           ),
+//           content: Container(
+//             height: 400,
+//             child: SingleChildScrollView(
+//               padding: const EdgeInsets.all(8.0),
+//               child: Column(
+//                 mainAxisAlignment: MainAxisAlignment.start,
+//                 crossAxisAlignment: CrossAxisAlignment.start,
+//                 mainAxisSize: MainAxisSize.min,
+//                 children: [
+//                   Padding(
+//                     padding: const EdgeInsets.all(8.0),
+//                     child: Text(
+//                       "Mension Your ID ",
+//                     ),
+//                   ),
+//                   Container(
+//                     padding: const EdgeInsets.all(8.0),
+//                     child: TextField(
+//                       decoration: InputDecoration(
+//                           border: OutlineInputBorder(),
+//                           hintText: 'Enter Id here',
+//                           labelText: 'ID'),
+//                     ),
+//                   ),
+//                   Container(
+//                     width: double.infinity,
+//                     height: 60,
+//                     padding: const EdgeInsets.all(8.0),
+//                     child: ElevatedButton(
+//                       onPressed: () {
+//                         Navigator.of(context).pop();
+//                       },
+//                       style: ElevatedButton.styleFrom(
+//                         primary: Colors.black,
+//                         // fixedSize: Size(250, 50),
+//                       ),
+//                       child: Text(
+//                         "Submit",
+//                       ),
+//                     ),
+//                   ),
+//                   Container(
+//                     padding: const EdgeInsets.all(8.0),
+//                     child: Text('Note'),
+//                   ),
+//                 ],
+//               ),
+//             ),
+//           ),
+//         );
+//       });
+// }
