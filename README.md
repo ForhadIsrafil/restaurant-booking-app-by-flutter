@@ -1,6 +1,6 @@
 # restaurant_booking_app
 
-A new Flutter project.
+ONLY UI DESIGN
 
 ## Getting Started
 

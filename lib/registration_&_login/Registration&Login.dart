@@ -23,6 +23,12 @@ class _RegistrationAndLoginState extends State<RegistrationAndLogin>
   late final TabController _controller = TabController(length: 2, vsync: this);
 
   @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: Column(
@@ -81,7 +87,7 @@ class _RegistrationAndLoginState extends State<RegistrationAndLogin>
                 showDialog(
                     context: context,
                     builder: (BuildContext context) =>
-                        _buildPopupDialog(context));
+                        _buildPopupDialog(context, _controller));
                 // showDataAlert();
               },
               style: ElevatedButton.styleFrom(
@@ -132,7 +138,7 @@ class _RegistrationAndLoginState extends State<RegistrationAndLogin>
   }
 }
 
-Widget _buildPopupDialog(BuildContext context) {
+Widget _buildPopupDialog(BuildContext context, TabController _controller) {
   return AlertDialog(
     scrollable: true,
     insetPadding: EdgeInsets.zero,
@@ -154,8 +160,36 @@ Widget _buildPopupDialog(BuildContext context) {
     //   top: 2.0,
     // ),
     content: SizedBox(
-    width: MediaQuery.of(context).size.width,
-      child: null,
+      width: MediaQuery.of(context).size.width,
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            TabBar(
+              controller: _controller,
+              indicatorColor: const Color(0xff32B768),
+              labelColor: const Color(0xff32B768),
+              unselectedLabelColor: const Color(0xff89909E),
+              indicator: const UnderlineTabIndicator(
+                borderSide: BorderSide(width: 2.0, color: Color(0xff89909E)),
+                insets: EdgeInsets.symmetric(horizontal: 5),
+              ),
+              tabs: const [Tab(text: "Create Account"), Tab(text: "Login")],
+            ),
+            SizedBox(
+              width: double.maxFinite,
+              height: 250,
+              child: TabBarView(
+                controller: _controller,
+                physics: const NeverScrollableScrollPhysics(),
+                children: const [
+                  Text("he"),
+                  Text("he"),
+                ],
+              ),
+            ),
+          ],
+        ),
+      ),
     ),
   );
 }
