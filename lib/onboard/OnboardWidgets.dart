@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:restaurant_booking_app/registration_&_login/Registration&Login.dart';
 import 'utils/PageSelectorPages.dart';
+import 'package:get/get.dart';
 
 class OnboardPages extends StatefulWidget {
   const OnboardPages({super.key});
@@ -90,10 +91,7 @@ class _OnboardPagesState extends State<OnboardPages>
                         _enableButton = false;
                       }
                     } else {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                            builder: (context) => const RegistrationAndLogin()),
-                      );
+                      Get.to(const RegistrationAndLogin());
                     }
                   });
                 },

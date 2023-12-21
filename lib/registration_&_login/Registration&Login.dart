@@ -138,10 +138,10 @@ class _RegistrationAndLoginState extends State<RegistrationAndLogin>
   }
 }
 
-Widget _buildPopupDialog(BuildContext context, TabController _controller) {
+Widget _buildPopupDialog(BuildContext context, TabController controller) {
   return AlertDialog(
-    scrollable: true,
-    insetPadding: EdgeInsets.zero,
+    scrollable: false,
+    insetPadding: const EdgeInsets.only(top: 190.0),
     backgroundColor: Colors.white,
     icon: const Icon(
       Icons.remove,
@@ -165,24 +165,40 @@ Widget _buildPopupDialog(BuildContext context, TabController _controller) {
         child: Column(
           children: [
             TabBar(
-              controller: _controller,
+              controller: controller,
               indicatorColor: const Color(0xff32B768),
               labelColor: const Color(0xff32B768),
               unselectedLabelColor: const Color(0xff89909E),
               indicator: const UnderlineTabIndicator(
-                borderSide: BorderSide(width: 2.0, color: Color(0xff89909E)),
+                borderSide: BorderSide(width: 2.0, color: Color(0xff32B768)),
                 insets: EdgeInsets.symmetric(horizontal: 5),
               ),
-              tabs: const [Tab(text: "Create Account"), Tab(text: "Login")],
+              tabs: const [
+                Tab(
+                  text: "Create Account",
+                ),
+                Tab(text: "Login")
+              ],
             ),
             SizedBox(
               width: double.maxFinite,
-              height: 250,
+              height: 600,
               child: TabBarView(
-                controller: _controller,
+                controller: controller,
                 physics: const NeverScrollableScrollPhysics(),
                 children: const [
-                  Text("he"),
+                  Column(
+                    children: [
+                      TextField(
+                        maxLines: 23,
+                        decoration: InputDecoration(
+                          label: Text("Full Name"),
+                          labelStyle: TextStyle(color: Colors.black12),
+                          hintText: "Enter your full name",
+                        ),
+                      )
+                    ],
+                  ),
                   Text("he"),
                 ],
               ),
