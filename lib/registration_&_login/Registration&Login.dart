@@ -232,9 +232,9 @@ Widget _buildPopupDialog(BuildContext context, TabController controller) {
                         ),
                         const ListTile(
                             title: Text(
-                              "Password",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            )),
+                          "Password",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )),
                         const TextField(
                           maxLines: 1,
                           decoration: InputDecoration(
@@ -244,7 +244,7 @@ Widget _buildPopupDialog(BuildContext context, TabController controller) {
                                   Radius.circular(10.0),
                                 ),
                                 borderSide:
-                                BorderSide(color: Color(0xff89909E))),
+                                    BorderSide(color: Color(0xff89909E))),
                           ),
                           // onSubmitted: ,
                         ),
@@ -260,7 +260,8 @@ Widget _buildPopupDialog(BuildContext context, TabController controller) {
                             style: ElevatedButton.styleFrom(
                                 // backgroundColor: const Color(0xffF4F4F4),
                                 textStyle: const TextStyle(
-                                    fontSize: 14.0, fontWeight: FontWeight.bold),
+                                    fontSize: 14.0,
+                                    fontWeight: FontWeight.bold),
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(12),
                                 )),
