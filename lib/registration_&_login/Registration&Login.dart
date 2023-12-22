@@ -180,27 +180,101 @@ Widget _buildPopupDialog(BuildContext context, TabController controller) {
                 Tab(text: "Login")
               ],
             ),
-            SizedBox(
-              width: double.maxFinite,
-              height: 600,
-              child: TabBarView(
-                controller: controller,
-                physics: const NeverScrollableScrollPhysics(),
-                children: const [
-                  Column(
-                    children: [
-                      TextField(
-                        maxLines: 23,
-                        decoration: InputDecoration(
-                          label: Text("Full Name"),
-                          labelStyle: TextStyle(color: Colors.black12),
-                          hintText: "Enter your full name",
+            const SizedBox(
+              height: 20.0,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SizedBox(
+                width: double.maxFinite,
+                height: 600,
+                child: TabBarView(
+                  controller: controller,
+                  physics: const NeverScrollableScrollPhysics(),
+                  children: [
+                    Column(
+                      children: [
+                        const ListTile(
+                            title: Text(
+                          "Full Name",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )),
+                        const TextField(
+                          maxLines: 1,
+                          decoration: InputDecoration(
+                            hintText: "Enter your full name",
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10.0),
+                                ),
+                                borderSide:
+                                    BorderSide(color: Color(0xff89909E))),
+                          ),
+                          // onSubmitted: ,
                         ),
-                      )
-                    ],
-                  ),
-                  Text("he"),
-                ],
+                        const ListTile(
+                            title: Text(
+                          "Email Address",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )),
+                        const TextField(
+                          maxLines: 1,
+                          decoration: InputDecoration(
+                            hintText: "Eg namaemail@emailkamu.com",
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10.0),
+                                ),
+                                borderSide:
+                                    BorderSide(color: Color(0xff89909E))),
+                          ),
+                          // onSubmitted: ,
+                        ),
+                        const ListTile(
+                            title: Text(
+                              "Password",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            )),
+                        const TextField(
+                          maxLines: 1,
+                          decoration: InputDecoration(
+                            hintText: "**** **** ****",
+                            border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10.0),
+                                ),
+                                borderSide:
+                                BorderSide(color: Color(0xff89909E))),
+                          ),
+                          // onSubmitted: ,
+                        ),
+                        const SizedBox(
+                          width: double.infinity,
+                          height: 20.0,
+                        ),
+                        SizedBox(
+                          height: 49,
+                          width: 256,
+                          child: ElevatedButton(
+                            onPressed: null,
+                            style: ElevatedButton.styleFrom(
+                                // backgroundColor: const Color(0xffF4F4F4),
+                                textStyle: const TextStyle(
+                                    fontSize: 14.0, fontWeight: FontWeight.bold),
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(12),
+                                )),
+                            child: const Text(
+                              "Registration",
+                              style: TextStyle(color: Color(0xff9CA3AF)),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    Text("he"),
+                  ],
+                ),
               ),
             ),
           ],
