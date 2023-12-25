@@ -61,7 +61,13 @@ class _RegistrationAndLoginState extends State<RegistrationAndLogin>
             height: 49,
             width: 256,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                    context: context,
+                    builder: (BuildContext context) =>
+                        _buildPopupDialog(context, _controller));
+                _controller.index = 0;
+              },
               style: ElevatedButton.styleFrom(
                   backgroundColor: const Color(0xff32B768),
                   textStyle: const TextStyle(
@@ -88,6 +94,7 @@ class _RegistrationAndLoginState extends State<RegistrationAndLogin>
                     context: context,
                     builder: (BuildContext context) =>
                         _buildPopupDialog(context, _controller));
+                _controller.index = 1;
                 // showDataAlert();
               },
               style: ElevatedButton.styleFrom(
@@ -149,7 +156,7 @@ Widget _buildPopupDialog(BuildContext context, TabController controller) {
       color: Colors.grey,
     ),
     iconPadding: EdgeInsets.zero,
-    alignment: Alignment.center,
+    // alignment: Alignment.center,
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
         topLeft: Radius.circular(35.0),
@@ -302,9 +309,9 @@ Widget _buildPopupDialog(BuildContext context, TabController controller) {
                       children: [
                         const ListTile(
                             title: Text(
-                              "Email Address",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            )),
+                          "Email Address",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )),
                         const TextField(
                           maxLines: 1,
                           decoration: InputDecoration(
@@ -314,15 +321,15 @@ Widget _buildPopupDialog(BuildContext context, TabController controller) {
                                   Radius.circular(10.0),
                                 ),
                                 borderSide:
-                                BorderSide(color: Color(0xff89909E))),
+                                    BorderSide(color: Color(0xff89909E))),
                           ),
                           // onSubmitted: ,
                         ),
                         const ListTile(
                             title: Text(
-                              "Password",
-                              style: TextStyle(fontWeight: FontWeight.bold),
-                            )),
+                          "Password",
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        )),
                         const TextField(
                           maxLines: 1,
                           decoration: InputDecoration(
@@ -332,13 +339,36 @@ Widget _buildPopupDialog(BuildContext context, TabController controller) {
                                   Radius.circular(10.0),
                                 ),
                                 borderSide:
-                                BorderSide(color: Color(0xff89909E))),
+                                    BorderSide(color: Color(0xff89909E))),
                           ),
                           // onSubmitted: ,
                         ),
+                        Align(
+                          alignment: Alignment.centerRight,
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                top: 7.0, bottom: 10.0, right: 5),
+                            child: RichText(
+                              text: TextSpan(children: [
+                                TextSpan(
+                                  text: "Forget Password?",
+                                  // textAlign: TextAlign.right,
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 12.0,
+                                    color: Color(0xff32B768),
+                                  ),
+                                  recognizer: TapGestureRecognizer()
+                                    ..onTap = () => launchUrlString(
+                                        "https://www.google.com"),
+                                ),
+                              ]),
+                            ),
+                          ),
+                        ),
                         const SizedBox(
                           width: double.infinity,
-                          height: 20.0,
+                          height: 10.0,
                         ),
                         SizedBox(
                           height: 49,
