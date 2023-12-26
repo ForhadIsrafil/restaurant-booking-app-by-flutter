@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
+import 'package:get/get.dart';
+import 'package:restaurant_booking_app/registration_&_login/forget_password/ForgetPassword.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 class RegistrationAndLogin extends StatefulWidget {
@@ -359,8 +360,7 @@ Widget _buildPopupDialog(BuildContext context, TabController controller) {
                                     color: Color(0xff32B768),
                                   ),
                                   recognizer: TapGestureRecognizer()
-                                    ..onTap = () => launchUrlString(
-                                        "https://www.google.com"),
+                                    ..onTap = () => Get.to(const ForgetPassword()),
                                 ),
                               ]),
                             ),
